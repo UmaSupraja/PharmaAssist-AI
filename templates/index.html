@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PharmaAssist AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-inside">
+      <h1>✚ PharmaAssist <span>AI</span></h1>
+      <div class="menu">
+        <a href="#stores">Medical Stores</a>
+        <a href="#medicines">Medicines</a>
+        <a href="#prescription">Prescription</a>
+        <a href="#emergency">Emergency</a>
+        <a href="#tips">Health Tips</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Home -->
+  <div class="hero">
+    <div class="wrap">
+      <h2>Healthcare help,<br>right when you need it.</h2>
+      <p>Find pharmacies in Vizag, learn about medicines, and get simple health tips in one place.</p>
+      <a class="big-button" href="#stores">Find a pharmacy</a>
+      <button class="big-button white" onclick="openChat()">Chat with assistant</button>
+    </div>
+  </div>
+
+  <!-- Medical stores -->
+  <div class="wrap section" id="stores">
+    <h2>Medical Stores in Vizag</h2>
+    <p class="note">Please call the store before visiting to confirm timings.</p>
+
+    <div class="filters">
+      <button onclick="filterStores('all')">All</button>
+      <button onclick="filterStores('24')">24 Hours</button>
+      <button onclick="filterStores('late')">Late Night</button>
+    </div>
+
+    <div class="grid">
+      <div class="store" data-type="24">
+        <span class="tag">24 hours</span>
+        <h3>Sainadh Medicals</h3>
+        <p>Maharani Peta, Opp. KGH Clock Tower</p>
+        <p>📞 88861 11091</p>
+      </div>
+
+      <div class="store" data-type="24">
+        <span class="tag">24 hours</span>
+        <h3>Apollo Pharmacy - Siripuram</h3>
+        <p>Shop 6, Dutta Island, Waltair Main Road</p>
+        <p>📞 079 4747 9941</p>
+      </div>
+
+      <div class="store" data-type="24">
+        <span class="tag">24 hours</span>
+        <h3>Subham Chemists Medizone</h3>
+        <p>Maharani Peta, Opp. KGH OP Gate</p>
+        <p>📞 99517 34943</p>
+      </div>
+
+      <div class="store" data-type="24">
+        <span class="tag">24 hours</span>
+        <h3>Health Care Pharmacy</h3>
+        <p>Vadlapudi, Siddhartha Nagar, Kurmannapalem</p>
+        <p>📞 094924 57089</p>
+      </div>
+
+      <div class="store" data-type="late">
+        <span class="tag orange">Late night</span>
+        <h3>Suraksha Medicals</h3>
+        <p>KGH Down Road, Opp. KGH OP Gate</p>
+        <p>🕒 5:00 AM - 12:00 midnight</p>
+        <p>📞 87902 03033</p>
+      </div>
+
+      <div class="store" data-type="late">
+        <span class="tag orange">Late night</span>
+        <h3>Mohan Medical Shop - ZP Branch</h3>
+        <p>Near Zilla Parishad, Collector's Office Road</p>
+        <p>🕒 8:00 AM - 11:00 PM</p>
+        <p>📞 77029 26883</p>
+      </div>
+
+      <div class="store" data-type="late">
+        <span class="tag orange">Late night</span>
+        <h3>Apollo Pharmacy - Aganampudi</h3>
+        <p>Visakhapatnam Steel Plant General Hospital Road</p>
+        <p>🕒 7:00 AM - 11:00 PM</p>
+        <p>📞 080 4446 2627</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medicines -->
+  <div class="gray-section" id="medicines">
+    <div class="wrap section">
+      <h2>Medicine Categories</h2>
+      <p class="note">This is only information. Always follow your doctor's advice.</p>
+
+      <div class="grid three">
+        <div class="card">
+          <h3>💜 Chronic Care</h3>
+          <p>Diabetes, Blood Pressure, Thyroid, Heart care</p>
+        </div>
+        <div class="card">
+          <h3>🌡 Fever and Pain</h3>
+          <p>Paracetamol, Dolo 650, Crocin, Ibuprofen</p>
+        </div>
+        <div class="card">
+          <h3>🤧 Cold and Allergy</h3>
+          <p>Cetirizine, Cough syrup, Lozenges, Nasal spray</p>
+        </div>
+        <div class="card">
+          <h3>🍊 Vitamins</h3>
+          <p>Multivitamin, Calcium, Vitamin D, Protein powder</p>
+        </div>
+        <div class="card">
+          <h3>🩹 First Aid</h3>
+          <p>Bandages, Antiseptic, Cotton, Medical tape</p>
+        </div>
+        <div class="card">
+          <h3>🩺 Devices</h3>
+          <p>Thermometer, BP monitor, Pulse oximeter, Glucometer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Prescription -->
+  <div class="wrap section" id="prescription">
+    <h2>Prescription</h2>
+    <p class="note">Choose a JPG, PNG or PDF file (max 10 MB). The file is not uploaded anywhere.</p>
+
+    <div class="grid two">
+      <div class="card">
+        <h3>Check your file</h3>
+        <input type="file" id="fileInput">
+        <button onclick="checkFile()">Check file</button>
+        <p id="fileMessage"></p>
+      </div>
+
+      <div class="card">
+        <h3>Tips</h3>
+        <ul>
+          <li>Upload a clear photo. Keep the medicine names and doses readable.</li>
+          <li>For a refill, call your pharmacy with your prescription.</li>
+          <li>Only share prescriptions with a trusted pharmacy.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Emergency -->
+  <div class="dark-section" id="emergency">
+    <div class="wrap section">
+      <h2>Emergency Help</h2>
+      <p>In a serious emergency, call immediately. Do not depend on this website.</p>
+
+      <div class="grid three">
+        <div class="number-box"><b>108</b>Ambulance</div>
+        <div class="number-box"><b>112</b>All emergencies</div>
+        <div class="number-box"><b>104</b>Health helpline</div>
+      </div>
+
+      <div class="grid two">
+        <div>
+          <h3>Hospitals</h3>
+          <ul>
+            <li>King George Hospital (KGH), Maharani Peta</li>
+            <li>Apollo Hospitals, Health City, Arilova</li>
+            <li>SevenHills Hospital, Waltair Uplands</li>
+          </ul>
+        </div>
+        <div>
+          <h3>First Aid</h3>
+          <ul>
+            <li><b>Bleeding:</b> Press firmly with a clean cloth and call for help.</li>
+            <li><b>Burns:</b> Keep under cool running water for 20 minutes.</li>
+            <li><b>Unconscious person:</b> Call 112 or 108.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Health tips -->
+  <div class="wrap section" id="tips">
+    <h2>Health Tips</h2>
+    <div class="grid five">
+      <div class="card center"><div class="emoji">💧</div><h3>Water</h3><p>Drink water regularly.</p></div>
+      <div class="card center"><div class="emoji">🥗</div><h3>Food</h3><p>Eat fruits, vegetables and balanced meals.</p></div>
+      <div class="card center"><div class="emoji">🚶</div><h3>Exercise</h3><p>Walk or exercise every day.</p></div>
+      <div class="card center"><div class="emoji">😴</div><h3>Sleep</h3><p>Sleep on time and avoid screens before bed.</p></div>
+      <div class="card center"><div class="emoji">🩺</div><h3>Check-up</h3><p>Go for regular health check-ups.</p></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>PharmaAssist AI is a student project. It is not a medical service. Please contact a doctor for medical advice.</p>
+  </div>
+
+
+  <!-- Chatbot -->
+  <button class="chat-button" id="chatButton" onclick="openChat()">💬 Chat</button>
+
+  <div class="chat-box" id="chatBox">
+    <div class="chat-title">
+      PharmaAssist AI
+      <button onclick="closeChat()">✕</button>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+      <p class="bot">Hi! Ask me about pharmacies, medicines, emergency numbers or health tips.</p>
+    </div>
+
+    <div class="chat-input">
+      <input type="text" id="chatInput" placeholder="Type your question...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
